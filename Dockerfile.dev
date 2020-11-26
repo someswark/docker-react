@@ -1,0 +1,21 @@
+# name of the file is Dockerfile.dev (As this will be used for dev purpose only )
+# telliing which image to use 
+
+FROM node:alpine
+
+#setting the working directory inside the frontend1 folder 
+WORKDIR '/app'
+
+#copying the package.json file , which will be used to install the app on docker 
+
+COPY package.json .
+
+# below is the command to install npm on docker
+RUN npm install 
+
+# below command will copy all other files from the local machine to the docker 
+COPY . .
+
+#below is the command to start the npm service on the docker 
+
+CMD ["npm", "run", "start"]
